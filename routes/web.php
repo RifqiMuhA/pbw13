@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Api\MahasiswaController;
 
-Route::get('/', function () {
+Route::get('/', function () { 
     return view('welcome');
 });
 

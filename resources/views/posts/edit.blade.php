@@ -1,21 +1,41 @@
 @extends('layout')
 
 @section('content')
-    <div class="bg-white shadow rounded p-4">
-        <form action="{{ route('posts.update', $post->id) }}" method="POST" class="space-y-4">
+<div class="max-w-4xl mx-auto p-8">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">Edit Post</h1>
+        <p class="text-gray-600">Perbarui informasi post di bawah</p>
+    </div>
+    
+    <!-- Form -->
+    <div class="border-2 border-black bg-transparent p-8">
+        <form action="{{ route('posts.update', $post->id) }}" method="POST" class="space-y-6">
             @csrf
             @method('PUT')
+            
+            <!-- Title Field -->
             <div>
-                <label class="block font-medium">Judul</label>
-                <input type="text" name="title" value="{{ $post->title }}" class="w-full border rounded px-3 py-2"
-                    required>
+                <label class="block font-semibold mb-2 text-sm uppercase tracking-wide">Judul Post</label>
+                <input type="text" name="title" value="{{ $post->title }}" class="w-full border border-black px-4 py-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-20 transition-all duration-200" required>
             </div>
+            
+            <!-- Content Field -->
             <div>
-                <label class="block font-medium">Konten</label>
-                <textarea name="content" rows="4" class="w-full border rounded px-3 py-2" required>{{ $post->content }}</textarea>
+                <label class="block font-semibold mb-2 text-sm uppercase tracking-wide">Konten</label>
+                <textarea name="content" rows="6" class="w-full border border-black px-4 py-3 bg-transparent focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-20 transition-all duration-200 resize-y" required>{{ $post->content }}</textarea>
             </div>
-            <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Update</button>
-            <a href="{{ route('posts.index') }}" class="text-gray-600 underline">Kembali</a>
+            
+            <!-- Buttons -->
+            <div class="flex gap-4 pt-4">
+                <button type="submit" class="inline-flex items-center px-6 py-3 border border-black bg-black text-white font-medium hover:bg-transparent hover:text-black transition-all duration-200">
+                    Update Post
+                </button>
+                <a href="{{ route('posts.index') }}" class="inline-flex items-center px-6 py-3 border border-black bg-transparent text-black font-medium hover:bg-black hover:text-white transition-all duration-200">
+                    Batal
+                </a>
+            </div>
         </form>
     </div>
+</div>
 @endsection
